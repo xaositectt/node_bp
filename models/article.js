@@ -1,0 +1,1 @@
+// define article model here
