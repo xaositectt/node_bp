@@ -18,7 +18,7 @@ app.use(logger('dev'))
 app.use(cors())
 
 app.get('/', (req, res) => {
-  res.status(200).json({msg: 'welcome'})
+  res.status(200).json({msg: 'hi there'})
 })
 
 app.use('/api', router)
@@ -29,6 +29,4 @@ app.use(function(req, res, next) {
 
 app.use(handleError)
 
-app.listen(port, () => {
-  console.log(`listening on port ${port}`)
-})
+export default app
