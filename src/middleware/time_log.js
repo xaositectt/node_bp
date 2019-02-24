@@ -1,4 +1,4 @@
-const timeLog = function (req, res, next) {
+export default function timeLog(req, res, next) {
   let date = new Date()
   req.requestTime = date
   let options = {
@@ -13,5 +13,3 @@ const timeLog = function (req, res, next) {
   console.log(date.toLocaleTimeString("en-us", options))
   next()
 }
-
-module.exports = timeLog

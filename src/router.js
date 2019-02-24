@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
+import { test } from './controllers/article_controller'
 const router = express.Router()
-const articleController = require('./controllers/article_controller')
 
-router.get('/article', articleController.test)
+router.get('/article', test)
 
-module.exports = router
+export default router

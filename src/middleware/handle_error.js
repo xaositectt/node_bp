@@ -1,4 +1,4 @@
-const handleError = function(err, req, res, next) {
+export default function handleError(err, req, res, next) {
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
@@ -9,6 +9,4 @@ const handleError = function(err, req, res, next) {
       status: `error ${err.status}`,
   })
 }
-  
-module.exports = handleError
   

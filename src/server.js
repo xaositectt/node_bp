@@ -1,11 +1,10 @@
-const express = require('express')
+import express from 'express'
+import logger from 'morgan'
+import createError from 'http-errors'
+import cors from 'cors'
+import router from './router'
+import { timeLog, handleError } from './middleware/index'
 const port = process.env.PORT || '3000'
-const logger = require('morgan')
-const createError = require('http-errors')
-const cors = require('cors')
-const router = require('./router')
-const timeLog = require('./middleware/time_log')
-const handleError = require('./middleware/error')
 
 const app = express()
 

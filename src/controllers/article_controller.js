@@ -1,6 +1,4 @@
-const article = require('../models/article')
-
-const test = function(req, res, next) {
+export function test(req, res, next) {
   res.status(200).json({
     articles: [
       {
@@ -9,8 +7,4 @@ const test = function(req, res, next) {
       }
     ]
   })
-}
-
-module.exports = {
-  test: test
 }
