@@ -4,9 +4,16 @@ import createError from 'http-errors'
 import cors from 'cors'
 import router from './router'
 import { timeLog, handleError } from './middleware/index'
+import customEnv from 'custom-env'
+
 const port = process.env.PORT || '3000'
 
 const app = express()
+const env = app.get('env')
+console.log('the environment is: ', env)
+
+// get the variables
+customEnv.env(env)
 
 app.use(timeLog)
 
