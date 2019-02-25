@@ -5,15 +5,16 @@ import cors from 'cors'
 import router from './router'
 import { timeLog, handleError } from './middleware/index'
 import customEnv from 'custom-env'
+import mongoose from './db'
 
 const port = process.env.PORT || '3000'
 
+// get the environment variables
 const app = express()
 const env = app.get('env')
-console.log('the environment is: ', env)
-
-// get the variables
 customEnv.env(env)
+
+mongoose(process.env.MONGO_URL)
 
 app.use(timeLog)
 
@@ -37,4 +38,5 @@ app.use(handleError)
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`)
+  console.log('the environment is: ', env)
 })
