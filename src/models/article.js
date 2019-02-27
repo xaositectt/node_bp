@@ -7,4 +7,4 @@ const articleSchema = mongoose.Schema({
   timestamps: true
 })
 
-export default mongoose.model('Note', articleSchema)
+export default mongoose.model('Article', articleSchema)
