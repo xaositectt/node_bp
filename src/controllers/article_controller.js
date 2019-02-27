@@ -3,8 +3,8 @@ import ArticleModel from '../models/article'
 export default class Article {
   index(req, res, next) {
     ArticleModel.find()
-    .then(notes => {
-      res.send(notes);
+    .then(articles => {
+      res.send(articles);
     }).catch(err => {
       res.status(500).send({
         message: err.message || "Some error occurred while retrieving articles."
@@ -15,7 +15,7 @@ export default class Article {
   create(req, res, next) {
     if(!req.body.content) {
       return res.status(400).send({
-        message: "Note content can not be empty"
+        message: "Article content can not be empty"
       })
     }
 
@@ -80,7 +80,7 @@ export default class Article {
         })
       }
       return res.status(500).send({
-        message: "Error updating note with id " + req.params.id
+        message: "Error updating article with id " + req.params.id
       })
     })
   }
