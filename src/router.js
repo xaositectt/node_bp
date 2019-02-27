@@ -7,5 +7,6 @@ router.get('/article', articleRoutes.index)
 router.get('/article/:id', articleRoutes.get)
 router.post('/article', articleRoutes.create)
 router.put('/article/:id', articleRoutes.update)
+router.delete('/article/:id', articleRoutes.delete)
 
 export default router

@@ -34,7 +34,7 @@ export default class Article {
     })
   }
 
-  get(req, res) {
+  get(req, res, next) {
     ArticleModel.findById(req.params.id)
     .then(article => {
       if(!article) {
@@ -55,7 +55,7 @@ export default class Article {
     })
   }
 
-  update(req, res) {
+  update(req, res, next) {
     if(!req.body.content) {
       return res.status(400).send({
         message: "Article content can not be empty"
@@ -81,6 +81,29 @@ export default class Article {
       }
       return res.status(500).send({
         message: "Error updating article with id " + req.params.id
+      })
+    })
+  }
+
+  delete(req, res, next) {
+    ArticleModel.findByIdAndRemove(req.params.id)
+    .then(article => {
+      if(!article) {
+        return res.status(404).send({
+          message: "Article not found with id " + req.params.id
+        })
+      }
+      res.send({
+        message: "Article deleted successfully!"
+      })
+    }).catch(err => {
+      if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+        return res.status(404).send({
+          message: "Article not found with id " + req.params.id
+        })
+      }
+      return res.status(500).send({
+        message: "Could not delete article with id " + req.params.id
       })
     })
   }
