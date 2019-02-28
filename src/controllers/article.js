@@ -1,4 +1,4 @@
-import ArticleModel from '../models/article'
+import { Article as ArticleModel } from '../models/index'
 
 export default class Article {
   index(req, res, next) {
